@@ -3,7 +3,9 @@ package com.example.demo.Model.Entities;
 public class Card {
 
     private int cardId;
-    private String cardValue;
+    private int bCardnumber;
+    private int sCardNumber;
+    private int gCardNumber;
     private String bStartDate;
     private String bEndDate;
     private String sStartDate;
@@ -11,14 +13,16 @@ public class Card {
     private String gStartDate;
     private String gEndDate;
 
-
     public Card() {
+
 
     }
 
-    public Card(int cardId, String cardValue, String bStartDate, String bEndDate, String sStartDate, String sEndDate, String gStartDate, String gEndDate) {
+    public Card(int cardId, int bCardnumber, int sCardNumber, int gCardNumber, String bStartDate, String bEndDate, String sStartDate, String sEndDate, String gStartDate, String gEndDate) {
         this.cardId = cardId;
-        this.cardValue = cardValue;
+        this.bCardnumber = bCardnumber;
+        this.sCardNumber = sCardNumber;
+        this.gCardNumber = gCardNumber;
         this.bStartDate = bStartDate;
         this.bEndDate = bEndDate;
         this.sStartDate = sStartDate;
@@ -26,6 +30,7 @@ public class Card {
         this.gStartDate = gStartDate;
         this.gEndDate = gEndDate;
     }
+
     public int getCardId() {
         return cardId;
     }
@@ -34,12 +39,28 @@ public class Card {
         this.cardId = cardId;
     }
 
-    public String getCardValue() {
-        return cardValue;
+    public int getbCardnumber() {
+        return bCardnumber;
     }
 
-    public void setCardValue(String cardValue) {
-        this.cardValue = cardValue;
+    public void setbCardnumber(int bCardnumber) {
+        this.bCardnumber = bCardnumber;
+    }
+
+    public int getsCardNumber() {
+        return sCardNumber;
+    }
+
+    public void setsCardNumber(int sCardNumber) {
+        this.sCardNumber = sCardNumber;
+    }
+
+    public int getgCardNumber() {
+        return gCardNumber;
+    }
+
+    public void setgCardNumber(int gCardNumber) {
+        this.gCardNumber = gCardNumber;
     }
 
     public String getbStartDate() {
