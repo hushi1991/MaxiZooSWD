@@ -6,17 +6,20 @@ public class CardHolder {
     private Member member;
     private Card card;
     private String adress;
+    private String postalCode;
     private String phone;
+
 
     public CardHolder(){
 
     }
 
-    public CardHolder(int id, Member member, Card card, String adress, String phone) {
+    public CardHolder(int id, Member member, Card card, String adress, String postalCode, String phone) {
         this.id = id;
         this.member = member;
         this.card = card;
         this.adress = adress;
+        this.postalCode = postalCode;
         this.phone = phone;
     }
 
@@ -59,5 +62,13 @@ public class CardHolder {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getPostalCode() {
+        return postalCode;
+    }
+
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
     }
 }

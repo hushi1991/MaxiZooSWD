@@ -6,7 +6,26 @@
 </head>
 <body>
 
+<h1>Opret Medlem</h1>
 
+<form th:action="@{/employeecreate}" method="post" th:object="${employee}">
+    <!-- th:object viser hvilken type object vi binder den indtastede data til -->
+
+    <table align="center">
+        <tr>
+            <td>Navn</td>
+            <td>Valgmuligheder</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="text" th:field="*{name}" placeholder="Navn"/>
+            </td>
+            <td>
+                <input type="submit" value="Opret Medarbejder" class="btn" id="green" />
+            </td>
+        </tr>
+    </table>
+</form>
 
 </body>
 </html>
