@@ -16,13 +16,13 @@ public class MemberRepo implements IMemberRepo {
     @Override
     public void createMember(Member member) {
 
-        jdbc.update("INSERT INTO maxi_zoo.name(name, mail, newsletter) VALUES('" + member.getName() +"',  '"+ member.getMail() +"',  '"+ member.isNewsLetter() +"')");
+        jdbc.update("INSERT INTO maxi_zoo.member(name, mail, newsletter) VALUES('" + member.getName() +"',  '"+ member.getMail() +"',  '"+ member.isNewsLetter() +"')");
     }
 
     @Override
     public void deleteMember(int id) {
 
-        jdbc.update("DELETE FROM maxi_zoo.name WHERE id=" + id + "");
+        jdbc.update("DELETE FROM maxi_zoo.member WHERE id=" + id + "");
     }
 
 
