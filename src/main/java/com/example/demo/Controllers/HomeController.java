@@ -21,17 +21,17 @@ public class HomeController {
     }
 
 
-    @GetMapping("/employeecreate")
+
+    @GetMapping("/createMember")
     public String employee(Model model) {
 
-        model.addAttribute("employee", new Member());
+        model.addAttribute("member", new Member());
 
-        return "employeecreate";
+        return "createMember";
     }
 
-    //Den indtastede information til medarbejderen gemmes og bliver gemt i DB.
-    @PostMapping("/employeecreate")
-    public String createEmployee(@ModelAttribute Member member, Model model){
+    @PostMapping("/createMember")
+    public String createMember(@ModelAttribute Member member, Model model){
 
         memberRepo.createMember(member);
 
@@ -40,6 +40,6 @@ public class HomeController {
         model.addAttribute("e", employees);
 
         */
-        return "adminemployee";
+        return "index";
     }
 }

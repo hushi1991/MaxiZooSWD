@@ -3,7 +3,7 @@ package com.example.demo.Model.Entities;
 public class Card {
 
     private int cardId;
-    private int bCardnumber;
+    private int bCardNumber;
     private int sCardNumber;
     private int gCardNumber;
     private String bStartDate;
@@ -18,9 +18,9 @@ public class Card {
 
     }
 
-    public Card(int cardId, int bCardnumber, int sCardNumber, int gCardNumber, String bStartDate, String bEndDate, String sStartDate, String sEndDate, String gStartDate, String gEndDate) {
+    public Card(int cardId, int bCardNumber, int sCardNumber, int gCardNumber, String bStartDate, String bEndDate, String sStartDate, String sEndDate, String gStartDate, String gEndDate) {
         this.cardId = cardId;
-        this.bCardnumber = bCardnumber;
+        this.bCardNumber = bCardNumber;
         this.sCardNumber = sCardNumber;
         this.gCardNumber = gCardNumber;
         this.bStartDate = bStartDate;
@@ -40,11 +40,11 @@ public class Card {
     }
 
     public int getbCardnumber() {
-        return bCardnumber;
+        return bCardNumber;
     }
 
     public void setbCardnumber(int bCardnumber) {
-        this.bCardnumber = bCardnumber;
+        this.bCardNumber = bCardnumber;
     }
 
     public int getsCardNumber() {

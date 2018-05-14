@@ -8,7 +8,7 @@
 
 <h1>Opret Medlem</h1>
 
-<form th:action="@{/employeecreate}" method="post" th:object="${employee}">
+<form th:action="@{/createMember}" method="post" th:object="${member}">
     <!-- th:object viser hvilken type object vi binder den indtastede data til -->
 
     <table align="center">
@@ -19,6 +19,7 @@
         <tr>
             <td>
                 <input type="text" th:field="*{name}" placeholder="Navn"/>
+                <input type="text" th:field="*{mail}" placeholder="Navn"/>
             </td>
             <td>
                 <input type="submit" value="Opret Medarbejder" class="btn" id="green" />
