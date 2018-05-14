@@ -9,20 +9,28 @@
 <h1>Opret Medlem</h1>
 
 <form th:action="@{/createMember}" method="post" th:object="${member}">
-    <!-- th:object viser hvilken type object vi binder den indtastede data til -->
 
     <table align="center">
         <tr>
             <td>Navn</td>
-            <td>Valgmuligheder</td>
+            <td>E-Mail</td>
+            <td>Nyhedsbrev</td>
         </tr>
         <tr>
             <td>
                 <input type="text" th:field="*{name}" placeholder="Navn"/>
-                <input type="text" th:field="*{mail}" placeholder="Navn"/>
             </td>
+
             <td>
-                <input type="submit" value="Opret Medarbejder" class="btn" id="green" />
+                <input type="text" th:field="*{mail}" placeholder="E-Mail"/>
+            </td>
+
+            <td>
+                <input type="radio" name="newsletter" value="Ja"/>
+            </td>
+
+            <td>
+                <input type="submit" value="Opret Medlem" class="btn" id="green" />
             </td>
         </tr>
     </table>

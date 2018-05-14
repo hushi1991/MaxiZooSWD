@@ -35,11 +35,8 @@ public class HomeController {
 
         memberRepo.createMember(member);
 
-        /*
-        employees = employRepo.readAll();
-        model.addAttribute("e", employees);
-
-        */
         return "index";
     }
+
+
 }

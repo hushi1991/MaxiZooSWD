@@ -5,17 +5,17 @@ public class Member {
     private int id;
     private String name;
     private String mail;
-    private boolean newsLetter;
+    private boolean newsletter;
 
     public Member(){
 
     }
 
-    public Member(int id, String name, String mail, boolean newsLetter) {
+    public Member(int id, String name, String mail, boolean newsletter) {
         this.id = id;
         this.name = name;
         this.mail = mail;
-        this.newsLetter = newsLetter;
+        this.newsletter = newsletter;
     }
 
     public int getId() {
@@ -42,11 +42,11 @@ public class Member {
         this.mail = mail;
     }
 
-    public boolean isNewsLetter() {
-        return newsLetter;
+    public boolean isNewsletter() {
+        return newsletter;
     }
 
-    public void setNewsLetter(boolean newsLetter) {
-        this.newsLetter = newsLetter;
+    public void setNewsletter(boolean newsletter) {
+        this.newsletter = newsletter;
     }
 }

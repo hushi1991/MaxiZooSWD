@@ -5,7 +5,7 @@ public class CardHolder {
     private int id;
     private Member member;
     private Card card;
-    private String adress;
+    private String address;
     private String postalCode;
     private String phone;
 
@@ -14,11 +14,11 @@ public class CardHolder {
 
     }
 
-    public CardHolder(int id, Member member, Card card, String adress, String postalCode, String phone) {
+    public CardHolder(int id, Member member, Card card, String address, String postalCode, String phone) {
         this.id = id;
         this.member = member;
         this.card = card;
-        this.adress = adress;
+        this.address = address;
         this.postalCode = postalCode;
         this.phone = phone;
     }
@@ -48,12 +48,12 @@ public class CardHolder {
         this.card = card;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getPhone() {

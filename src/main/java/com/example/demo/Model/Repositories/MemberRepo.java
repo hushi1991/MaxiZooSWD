@@ -16,7 +16,7 @@ public class MemberRepo implements IMemberRepo {
     @Override
     public void createMember(Member member) {
 
-        //jdbc.update("INSERT INTO maxi_zoo.member(name, mail, newsletter) VALUES('" + member.getName() +"',  '"+ member.getMail() +"',  '"+ member.isNewsLetter() +"')");
+        //jdbc.update("INSERT INTO maxi_zoo.member(name, mail, newsletter) VALUES('" + member.getName() +"',  '"+ member.getMail() +"',  '"+ member.isNewsletter() +"')");
         jdbc.update("INSERT INTO maxi_zoo.member(name, mail) VALUES('" + member.getName() +"',  '"+ member.getMail() +"')");
     }
 
