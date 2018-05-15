@@ -3,6 +3,7 @@ package com.example.demo.Model.Repositories;
 import com.example.demo.Model.Entities.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -26,5 +27,14 @@ public class MemberRepo implements IMemberRepo {
         jdbc.update("DELETE FROM maxi_zoo.member WHERE id=" + id + "");
     }
 
+    @Override
+    public Member read(int id) {
+        SqlRowSet sqlRowSet = jdbc.queryForRowSet("SELECT * FROM maxi_zoo.member WHERE id =" + id + "");
+
+        if (sqlRowSet.next()){
+            return new Member(sqlRowSet.getInt("id"), sqlRowSet.getString("name"), sqlRowSet.getString("mail"), sqlRowSet.getBoolean("newsletter"));
+        }
+        return new Member();
+    }
 
 }

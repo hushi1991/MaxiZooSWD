@@ -9,4 +9,6 @@ public interface ICardRepo {
     public void deleteCard(int id);
 
     public void updateCard(Card card);
+
+    public Card read(int id);
 }

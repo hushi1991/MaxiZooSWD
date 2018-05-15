@@ -10,6 +10,12 @@ public class CardholderRepo implements ICardHolderRepo {
 
     @Autowired
     private JdbcTemplate jdbc;
+    @Autowired
+    private CardRepo cR;
+    @Autowired
+    private EmployeeRepo eR;
+    @Autowired
+    private MemberRepo mR;
 
     @Override
     public void createCardHolder(CardHolder cardHolder) {
@@ -34,18 +40,15 @@ public class CardholderRepo implements ICardHolderRepo {
     }
 
     // Problem er her at vi prøver at hente et objekt og ikke en datatype.
-    /*
     @Override
-    public CardHolder readSpecificCardHolder(int id) {
+    public CardHolder read(int id) {
 
         SqlRowSet sqlRowSet = jdbc.queryForRowSet("SELECT * FROM maxi_zoo.cardholder WHERE id=" + id + "");
 
         if (sqlRowSet.next()){
-            return new CardHolder(sqlRowSet.getInt("id"), sqlRowSet.getObject("member"), sqlRowSet.getObject("card"), sqlRowSet.getString("address"), sqlRowSet.getString("postalCode"), sqlRowSet.getString("phone"));
+            return new CardHolder(sqlRowSet.getInt("id"), mR.read(sqlRowSet.getInt("member_id")), cR.read(sqlRowSet.getInt("card_id")), sqlRowSet.getString("address"), sqlRowSet.getString("postalcode"), sqlRowSet.getString("phone"), eR.read(sqlRowSet.getInt("employee_id")));
         }
         return new CardHolder();
     }
-    */
-
 
 }

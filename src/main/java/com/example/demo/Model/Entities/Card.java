@@ -1,24 +1,29 @@
 package com.example.demo.Model.Entities;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.time.LocalDate;
+
 public class Card {
 
     private int cardId;
     private int bCardNumber;
     private int sCardNumber;
     private int gCardNumber;
-    private String bStartDate;
-    private String bEndDate;
-    private String sStartDate;
-    private String sEndDate;
-    private String gStartDate;
-    private String gEndDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate bStartDate;
+    private LocalDate bEndDate;
+    private LocalDate sStartDate;
+    private LocalDate sEndDate;
+    private LocalDate gStartDate;
+    private LocalDate gEndDate;
 
     public Card() {
 
 
     }
 
-    public Card(int cardId, int bCardNumber, int sCardNumber, int gCardNumber, String bStartDate, String bEndDate, String sStartDate, String sEndDate, String gStartDate, String gEndDate) {
+    public Card(int cardId, int bCardNumber, int sCardNumber, int gCardNumber, LocalDate bStartDate, LocalDate bEndDate, LocalDate sStartDate, LocalDate sEndDate, LocalDate gStartDate, LocalDate gEndDate) {
         this.cardId = cardId;
         this.bCardNumber = bCardNumber;
         this.sCardNumber = sCardNumber;
@@ -39,12 +44,12 @@ public class Card {
         this.cardId = cardId;
     }
 
-    public int getbCardnumber() {
+    public int getbCardNumber() {
         return bCardNumber;
     }
 
-    public void setbCardnumber(int bCardnumber) {
-        this.bCardNumber = bCardnumber;
+    public void setbCardNumber(int bCardNumber) {
+        this.bCardNumber = bCardNumber;
     }
 
     public int getsCardNumber() {
@@ -63,52 +68,51 @@ public class Card {
         this.gCardNumber = gCardNumber;
     }
 
-    public String getbStartDate() {
+    public LocalDate getbStartDate() {
         return bStartDate;
     }
 
-    public void setbStartDate(String bStartDate) {
+    public void setbStartDate(LocalDate bStartDate) {
         this.bStartDate = bStartDate;
     }
 
-    public String getbEndDate() {
+    public LocalDate getbEndDate() {
         return bEndDate;
     }
 
-    public void setbEndDate(String bEndDate) {
+    public void setbEndDate(LocalDate bEndDate) {
         this.bEndDate = bEndDate;
     }
 
-    public String getsStartDate() {
+    public LocalDate getsStartDate() {
         return sStartDate;
     }
 
-    public void setsStartDate(String sStartDate) {
+    public void setsStartDate(LocalDate sStartDate) {
         this.sStartDate = sStartDate;
     }
 
-    public String getsEndDate() {
+    public LocalDate getsEndDate() {
         return sEndDate;
     }
 
-    public void setsEndDate(String sEndDate) {
+    public void setsEndDate(LocalDate sEndDate) {
         this.sEndDate = sEndDate;
     }
 
-    public String getgStartDate() {
+    public LocalDate getgStartDate() {
         return gStartDate;
     }
 
-    public void setgStartDate(String gStartDate) {
+    public void setgStartDate(LocalDate gStartDate) {
         this.gStartDate = gStartDate;
     }
 
-    public String getgEndDate() {
+    public LocalDate getgEndDate() {
         return gEndDate;
     }
 
-    public void setgEndDate(String gEndDate) {
+    public void setgEndDate(LocalDate gEndDate) {
         this.gEndDate = gEndDate;
     }
-
 }

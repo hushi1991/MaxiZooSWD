@@ -12,4 +12,6 @@ public interface ICardHolderRepo {
 
     public CardHolder readSpecificCardHolder(int id);
 
+    public CardHolder read(int id);
+
 }
