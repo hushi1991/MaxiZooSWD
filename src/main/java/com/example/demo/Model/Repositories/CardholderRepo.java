@@ -22,17 +22,15 @@ public class CardholderRepo implements ICardHolderRepo {
     @Override
     public void createCardHolder(CardHolder cardHolder) {
 
-        /*
-        jdbc.update("INSERT INTO maxi_zoo.employee(name, status, phone) VALUES('" + employee.getName() +"', '"+ employee.getStatus() +"', '"+ employee.getPhone() +"')");
-        jdbc.update("INSERT INTO maxi_zoo.cardholder(address, postalcode, phone, member_id, card_id, employee_id) ")
-        */
-
-
+        jdbc.update("INSERT INTO maxi_zoo.cardholder(address, postalcode, phone, member_id, card_id, employee_id) VALUES('" + cardHolder.getAddress() +"', '" + cardHolder.getPostalCode() +"', '" + cardHolder.getPhone() +"', '" + cardHolder.getMember() +"'," +
+                        " '" + cardHolder.getCard() +"', '" + cardHolder.getEmployee() +"',) ");
 
     }
 
     @Override
     public void deleteCardHolder(int id) {
+
+        jdbc.update("DELETE FROM maxi_zoo.cardholder WHERE id=" + id + "");
 
     }
 
