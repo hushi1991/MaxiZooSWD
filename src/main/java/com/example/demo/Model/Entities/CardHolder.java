@@ -81,4 +81,16 @@ public class CardHolder {
         this.employee = employee;
     }
 
+    @Override
+    public String toString() {
+        return "CardHolder{" +
+                "id=" + id +
+                ", member=" + member +
+                ", card=" + card +
+                ", address='" + address + '\'' +
+                ", postalCode='" + postalCode + '\'' +
+                ", phone='" + phone + '\'' +
+                ", employee=" + employee +
+                '}';
+    }
 }

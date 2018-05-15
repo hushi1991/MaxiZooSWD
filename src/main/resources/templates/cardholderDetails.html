@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+
+<h1></h1>
+
+<div class="container">
+    <div class="row">
+        <table class="table" >
+            <tr>
+                <td>Navn: </td>
+                <td th:text="${member.name}"></td>
+            </tr>
+            <tr>
+                <td>E-mail: </td>
+                <td th:text="${member.mail}"></td>
+            </tr>
+    <tr>
+        <td>Telefon: </td>
+        <td th:text="${cardholder.phone}"></td>
+    </tr>
+    <tr>
+        <td>Adresse:  </td>
+        <td th:text="${cardholder.address}"></td>
+    </tr>
+    <tr>
+        <td>Bronzekort:</td>
+        <td th:utext="${card.bCardNumber} + '&lt;br&gt;' + ${card.bStartDate}  + '&lt;br&gt;' + ${card.bEndDate}"></td>
+    </tr>
+    <tr>
+        <td>Sølvkort:</td>
+        <td th:utext="${card.sCardNumber} + '&lt;br&gt;' + ${card.sStartDate}  + '&lt;br&gt;' + ${card.sEndDate}"></td>
+    </tr>
+    <tr>
+        <td>Guldkort:</td>
+        <td th:utext="${card.gCardNumber} + '&lt;br&gt;' + ${card.gStartDate}  + '&lt;br&gt;' + ${card.gEndDate}"></td>
+    </tr>
+    <tr>
+        <td>Medarbejder ID:  </td>
+        <td th:text="${employee.id}"></td>
+    </tr>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
