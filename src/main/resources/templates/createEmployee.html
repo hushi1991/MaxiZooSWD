@@ -7,15 +7,15 @@
 <body>
 
 
-<h1>Opret Medlem</h1>
+<h1>Opret Medarbejder</h1>
 
-<form th:action="@{/createMember}" method="post" th:object="${member}">
+<form th:action="@{/createEmployee}" method="post" th:object="${employee}">
 
     <table align="center">
         <tr>
             <td>Navn</td>
-            <td>E-Mail</td>
-            <td>Nyhedsbrev</td>
+            <td>Status</td>
+            <td>Phone</td>
         </tr>
         <tr>
             <td>
@@ -23,15 +23,14 @@
             </td>
 
             <td>
-                <input type="text" th:field="*{mail}" placeholder="E-Mail"/>
+                <input type="text" th:field="*{status}" placeholder="Status"/>
             </td>
 
             <td>
-                <input type="radio" name="newsletter" value="Ja"/>
+                <input type="text" th:field="*{phone}" placeholder="Phone"/>
             </td>
-
             <td>
-                <input type="submit" value="Opret Medlem" class="btn" id="green" />
+                <input type="submit" value="Opret Medarbejder" class="btn" id="green" />
             </td>
         </tr>
     </table>
