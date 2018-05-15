@@ -13,8 +13,8 @@ public class EmployeeRepo implements IEmployeeRepo {
     //Det Employee objekt der gives i parametret bliver skabt i DB.
     @Override
     public void createEmployee(Employee employee){
-        /*
-        jdbc.update("INSERT INTO employees(name, totalHours) VALUES('" + employee.getName() +"', '"+ employee.getTotalHours() +"')");
-        */
+
+        jdbc.update("INSERT INTO maxi_zoo.employee(name, status, phone) VALUES('" + employee.getName() +"', '"+ employee.getStatus() +"', '"+ employee.getPhone() +"')");
+
     }
 }
