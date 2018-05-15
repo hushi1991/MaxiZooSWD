@@ -4,7 +4,9 @@ import com.example.demo.Model.Entities.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class EmployeeRepo implements IEmployeeRepo {
 
     @Autowired
