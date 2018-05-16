@@ -2,11 +2,62 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
     <title>Velkommen</title>
+
+    <link rel="stylesheet"
+          href="C:\Users\Bruger\IdeaProjects\MaxiZooSWD\src\main\resources\static\style.css"
+          th:href="@{style.css}"/>
+
+    <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
+
 </head>
 <body>
 
-<img src="https://i.imgur.com/FjpjnaJ.jpg">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" th:href="@{/index}" style="font-family: Anton; color: red">Maxi Zoo</a>
+    <img alt="Brand" src="https://i.imgur.com/IVlfQjj.jpg" height="90" width="90">
+
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Tilmeld Poteklubben <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Åbningstider</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" th:href="@{/login}">Login</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
+
+<img src="https://i.imgur.com/SD0lTbH.jpg" height="600" width="1400">
+
+
+<!--
+
+<img src="https://i.imgur.com/doI5LGU.jpg" height="30" width="1400">
+
+
+<div align="center">
+    <ul align="center">
+        <li><a href="">Tilmeld Pote-Klubben</a></li>
+        <li><a href="">Åbningstider</a></li>
+        <li><a th:href="@{/login}">Login</a></li>
+    </ul>
+</div>
+
+<img src="https://i.imgur.com/zbPes07.jpg" height="600" width="1400">
+
+-->
 
 </body>
 </html>
