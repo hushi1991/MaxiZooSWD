@@ -6,5 +6,63 @@
 </head>
 <body>
 
+<form method="POST" action="/createCardHolder">
+
+<table align="center">
+    <tr>
+        <td>mail</td>
+        <td>Phone</td>
+        <td>Adress</td>
+        <td>postalcode</td>
+        <td>bronzekort</td>
+        <td>sølvkort</td>
+        <td>guldkort</td>
+        <td>medarbejder id</td>
+
+    </tr>
+    <tr>
+        <td>
+            <input type="text" name="mail" placeholder="kundens email"/>
+        </td>
+
+        <td>
+            <input type="text" name="phone" placeholder="telefon"/>
+        </td>
+
+        <td>
+            <input type="text" name="address" placeholder="adresse"/>
+        </td>
+
+        <td>
+            <input type="text" name="postalCode" placeholder="postnummer"/>
+        </td>
+        <td>
+            <input type="text" name="bCardNumber" placeholder="kortnummer"/>
+            <input type="date" name="bStartDate" placeholder="udleveret"/>
+            <input type="date" name="bEndDate" placeholder="destrueret"/>
+        </td>
+        <td>
+            <input type="text" name="sCardNumber" placeholder="kortnummer"/>
+            <input type="date" name="sStartDate" placeholder="udleveret"/>
+            <input type="date" name="sEndDate" placeholder="destrueret"/>
+        </td>
+        <td>
+            <input type="text" name="gCardNumber" placeholder="kortnummer"/>
+            <input type="date" name="gStartDate" placeholder="udleveret"/>
+            <input type="date" name="gEndDate" placeholder="destrueret"/>
+        </td>
+        <td>
+            <input type="text" name="empId" placeholder="medarbejder id"/>
+        </td>
+
+
+
+        <td>
+            <input type="submit" value="Opret kortholder" class="btn" id="green" />
+        </td>
+    </tr>
+</table>
+</form>
+
 </body>
 </html>

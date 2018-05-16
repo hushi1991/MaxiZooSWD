@@ -1,6 +1,8 @@
 package com.example.demo.Model.Repositories;
 
+import com.example.demo.Model.Entities.Card;
 import com.example.demo.Model.Entities.CardHolder;
+import com.example.demo.Model.Entities.Employee;
 import com.example.demo.Model.Entities.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -19,8 +21,31 @@ public class CardholderRepo implements ICardHolderRepo {
     @Autowired
     private MemberRepo mR;
 
+
     @Override
-    public void createCardHolder(CardHolder cardHolder) {
+    public void createCardHolder(CardHolder cardHolder, Card card, String mail, String empId) {
+        Card cnew = new Card();
+        Member mnew = new Member();
+        Employee enew = new Employee();
+
+
+        jdbc.update("INSERT INTO maxi_zoo.card (bcardnumber, scardnumber, gcardnumber, bstartdate, sstartdate, gstartdate, benddate, senddate, genddate) values ('" + card.getbCardNumber() +"', '" + card.getsCardNumber() +"', '" + card.getgCardNumber() +"', '" + card.getbStartDate() +"', '" + card.getsStartDate() +"'," +
+                "'" + card.getgStartDate() +"', '" + card.getbEndDate() +"', '" + card.getsEndDate() +"', '" + card.getgEndDate() +"',);");
+
+        SqlRowSet sqlrow = jdbc.queryForRowSet("SELECT * FROM maxi_zoo.card WHERE bcardnumber = '" + card.getbCardNumber() + "'");
+        if (sqlrow.next()) {
+            cnew.setCardId(sqlrow.getInt("id"));
+        }
+
+        SqlRowSet sqlrow1 = jdbc.queryForRowSet("SELECT id FROM maxi_zoo.member WHERE mail = '" + mail + "'");
+        if (sqlrow1.next()) {
+            mnew.setId(sqlrow1.getInt("id"));
+        }
+
+        SqlRowSet sqlrow2 = jdbc.queryForRowSet("SELECT id FROM maxi_zoo.employee WHERE id = '" + empId + "'");
+        if (sqlrow2.next()) {
+            enew.setId(sqlrow2.getInt("id"));
+        }
 
         jdbc.update("INSERT INTO maxi_zoo.cardholder(address, postalcode, phone, member_id, card_id, employee_id) VALUES('" + cardHolder.getAddress() +"', '" + cardHolder.getPostalCode() +"', '" + cardHolder.getPhone() +"', '" + cardHolder.getMember() +"'," +
                         " '" + cardHolder.getCard() +"', '" + cardHolder.getEmployee() +"',) ");
