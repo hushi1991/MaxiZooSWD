@@ -15,4 +15,6 @@ public interface ICardHolderRepo {
 
     public void createCardHolder(CardHolder cardHolder, Card card, String mail, String empId);
 
+    public CardHolder search(String phone);
+
 }
