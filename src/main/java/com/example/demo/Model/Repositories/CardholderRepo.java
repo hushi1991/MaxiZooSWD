@@ -29,9 +29,11 @@ public class CardholderRepo implements ICardHolderRepo {
         Employee enew = new Employee();
 
 
-        jdbc.update("INSERT INTO maxi_zoo.card (bcardnumber, scardnumber, gcardnumber, bstartdate, sstartdate, gstartdate, benddate, senddate, genddate) values ('" + card.getbCardNumber() +"', '" + card.getsCardNumber() +"', '" + card.getgCardNumber() +"', '" + card.getbStartDate() +"', '" + card.getsStartDate() +"'," +
+        /*jdbc.update("INSERT INTO maxi_zoo.card (bcardnumber, scardnumber, gcardnumber, bstartdate, sstartdate, gstartdate, benddate, senddate, genddate) values ('" + card.getbCardNumber() +"', '" + card.getsCardNumber() +"', '" + card.getgCardNumber() +"', '" + card.getbStartDate() +"', '" + card.getsStartDate() +"'," +
                 "'" + card.getgStartDate() +"', '" + card.getbEndDate() +"', '" + card.getsEndDate() +"', '" + card.getgEndDate() +"',);");
+        */
 
+        cR.createCard(card);
         SqlRowSet sqlrow = jdbc.queryForRowSet("SELECT * FROM maxi_zoo.card WHERE bcardnumber = '" + card.getbCardNumber() + "'");
         if (sqlrow.next()) {
             cnew.setCardId(sqlrow.getInt("id"));
@@ -47,8 +49,8 @@ public class CardholderRepo implements ICardHolderRepo {
             enew.setId(sqlrow2.getInt("id"));
         }
 
-        jdbc.update("INSERT INTO maxi_zoo.cardholder(address, postalcode, phone, member_id, card_id, employee_id) VALUES('" + cardHolder.getAddress() +"', '" + cardHolder.getPostalCode() +"', '" + cardHolder.getPhone() +"', '" + cardHolder.getMember() +"'," +
-                        " '" + cardHolder.getCard() +"', '" + cardHolder.getEmployee() +"',) ");
+        jdbc.update("INSERT INTO maxi_zoo.cardholder(address, postalcode, phone, member_id, card_id, employee_id) VALUES('" + cardHolder.getAddress() +"', '" + cardHolder.getPostalCode() +"', '" + cardHolder.getPhone() +"', '" + mnew.getId() +"'," +
+                        " '" + cnew.getCardId() +"', '" + enew.getId() + "')");
 
     }
 

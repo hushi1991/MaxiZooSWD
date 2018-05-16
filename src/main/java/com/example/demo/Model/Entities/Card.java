@@ -12,10 +12,15 @@ public class Card {
     private int gCardNumber;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate bStartDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate bEndDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate sStartDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate sEndDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate gStartDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate gEndDate;
 
     public Card() {
