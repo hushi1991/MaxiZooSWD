@@ -51,7 +51,7 @@ public class HomeController {
                 return "login";
             }
         }
-        return "redirect:/index";
+        return "redirect:/employeeIndex";
     }
 
     private boolean sessionController(HttpSession session){
