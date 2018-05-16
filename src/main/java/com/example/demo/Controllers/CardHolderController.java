@@ -12,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 public class CardHolderController {
 
@@ -25,26 +27,36 @@ public class CardHolderController {
     private CardholderRepo cahoRepo;
 
     @GetMapping("/createCardHolder")
-    public String createCardHolder(Model model) {
+    public String createCardHolder(Model model, HttpSession session) {
         model.addAttribute("cardholder", new CardHolder());
         model.addAttribute("card", new Card());
-        return "createCardHolder";
+
+        if (sessionController(session)){
+            return "createCardHolder";
+        } else {
+            return "login";
+        }
     }
 
 
     @PostMapping("/createCardHolder")
     public String createMember(@ModelAttribute CardHolder cardHolder, Card card, @RequestParam String mail, @RequestParam String empId){
-
         cahoRepo.createCardHolder(cardHolder, card, mail, empId);
-
         return "index";
     }
 
     //Søge funktion.
     @RequestMapping(value = {"/searchCardHolder"}, method = RequestMethod.GET)
-    public String search() {
-        return "searchCardHolder";
+    public String search(HttpSession session) {
+
+        if(sessionController(session)){
+            return "searchCardHolder";
+        }
+        else {
+            return "login";
+        }
     }
+
 
     //Hvis tlf nr passer i DB vises den rigtige kunde.
     @RequestMapping(value = "/searchCardHolder", method = RequestMethod.POST)
@@ -71,5 +83,13 @@ public class CardHolderController {
         System.out.println(cardholder);
         return "cardholderDetails";
     }*/
+
+    private boolean sessionController(HttpSession session){
+        if(session.getAttribute("status") != null && session.getAttribute("status").equals("1")){
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
 
