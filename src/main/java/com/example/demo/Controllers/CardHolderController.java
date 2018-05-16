@@ -10,10 +10,7 @@ import com.example.demo.Model.Repositories.MemberRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class CardHolderController {
@@ -26,17 +23,6 @@ public class CardHolderController {
     private MemberRepo memRepo;
     @Autowired
     private CardholderRepo cahoRepo;
-
-    @GetMapping("/cardholderDetails")
-    public String showCardHolderDetails(@RequestParam int id, Model model){
-        CardHolder cardholder = cahoRepo.read(id);
-        model.addAttribute("cardholder", cardholder);
-        model.addAttribute("member", cardholder.getMember());
-        model.addAttribute("card", cardholder.getCard());
-        model.addAttribute("employee", cardholder.getEmployee());
-        System.out.println(cardholder);
-        return "cardholderDetails";
-    }
 
     @GetMapping("/createCardHolder")
     public String createCardHolder(Model model) {
@@ -53,5 +39,37 @@ public class CardHolderController {
 
         return "index";
     }
+
+    //Søge funktion.
+    @RequestMapping(value = {"/searchCardHolder"}, method = RequestMethod.GET)
+    public String search() {
+        return "searchCardHolder";
+    }
+
+    //Hvis tlf nr passer i DB vises den rigtige kunde.
+    @RequestMapping(value = "/searchCardHolder", method = RequestMethod.POST)
+    public String phonelogin(Model model, @RequestParam String phone) {
+        if (cahoRepo.search(phone) != null) {
+            CardHolder cardholder = cahoRepo.search(phone);
+            model.addAttribute("cardholder", cardholder);
+            model.addAttribute("member", cardholder.getMember());
+            model.addAttribute("card", cardholder.getCard());
+            model.addAttribute("employee", cardholder.getEmployee());
+            return "cardholderDetails";
+        }
+        //Hvis nummeret ikke passer, eller der findes ingen match, så bliver man på søgesiden
+        return "searchCardHolder";
+    }
+
+    /*@GetMapping("/cardholderDetails")
+    public String showCardHolderDetails(@RequestParam int id, Model model){
+        CardHolder cardholder = cahoRepo.read(id);
+        model.addAttribute("cardholder", cardholder);
+        model.addAttribute("member", cardholder.getMember());
+        model.addAttribute("card", cardholder.getCard());
+        model.addAttribute("employee", cardholder.getEmployee());
+        System.out.println(cardholder);
+        return "cardholderDetails";
+    }*/
 }
 

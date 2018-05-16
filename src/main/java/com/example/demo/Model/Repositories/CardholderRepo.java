@@ -28,11 +28,6 @@ public class CardholderRepo implements ICardHolderRepo {
         Member mnew = new Member();
         Employee enew = new Employee();
 
-
-        /*jdbc.update("INSERT INTO maxi_zoo.card (bcardnumber, scardnumber, gcardnumber, bstartdate, sstartdate, gstartdate, benddate, senddate, genddate) values ('" + card.getbCardNumber() +"', '" + card.getsCardNumber() +"', '" + card.getgCardNumber() +"', '" + card.getbStartDate() +"', '" + card.getsStartDate() +"'," +
-                "'" + card.getgStartDate() +"', '" + card.getbEndDate() +"', '" + card.getsEndDate() +"', '" + card.getgEndDate() +"',);");
-        */
-
         cR.createCard(card);
         SqlRowSet sqlrow = jdbc.queryForRowSet("SELECT * FROM maxi_zoo.card WHERE bcardnumber = '" + card.getbCardNumber() + "'");
         if (sqlrow.next()) {
@@ -74,6 +69,19 @@ public class CardholderRepo implements ICardHolderRepo {
 
         if (sqlRowSet.next()){
             return new CardHolder(sqlRowSet.getInt("id"), mR.read(sqlRowSet.getInt("member_id")), cR.read(sqlRowSet.getInt("card_id")), sqlRowSet.getString("address"), sqlRowSet.getString("postalcode"), sqlRowSet.getString("phone"), eR.read(sqlRowSet.getInt("employee_id")));
+        }
+        return new CardHolder();
+    }
+
+    @Override
+    public CardHolder search(String phone) {
+        CardHolder chnew = new CardHolder();
+
+        SqlRowSet sqlRowSet = jdbc.queryForRowSet("SELECT id FROM maxi_zoo.cardholder WHERE phone=" + phone + "");
+
+        if (sqlRowSet.next()) {
+            chnew = read(sqlRowSet.getInt("id"));
+            return chnew;
         }
         return new CardHolder();
     }
