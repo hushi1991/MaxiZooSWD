@@ -1,9 +1,10 @@
 package com.example.demo.Controllers;
 
-
-import com.example.demo.Model.Entities.Member;
+import com.example.demo.Model.Entities.User;
 import com.example.demo.Model.Repositories.IMemberRepo;
+import com.example.demo.Model.Repositories.IUserRepo;
 import com.example.demo.Model.Repositories.MemberRepo;
+import com.example.demo.Model.Repositories.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,34 +17,41 @@ import javax.servlet.http.HttpSession;
 public class HomeController {
 
     @Autowired
-    IMemberRepo memberRepo = new MemberRepo();
+    IUserRepo userRepo = new UserRepo();
+
 
     @RequestMapping(value = {"","/","index"}, method = RequestMethod.GET)
     public String index(HttpServletRequest request, HttpSession session) {
         return "index";
     }
 
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String login(Model model, HttpSession session){
 
-
-    @GetMapping("/createMember")
-    public String employee(Model model, HttpSession session) {
-
-        model.addAttribute("member", new Member());
-
-        if(sessionController(session)){
-            return "createMember";
-        }
-        else {
-            return "login";
-        }
+        model.addAttribute("user", new User());
+        return "login";
     }
 
-    @PostMapping("/createMember")
-    public String createMember(@ModelAttribute Member member, Model model){
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public String login(User user, Model model, HttpSession session){
 
-        memberRepo.createMember(member);
+        User dbUser = userRepo.login(user.getUsername(), user.getPassword());
 
-        return "index";
+        if (dbUser != null){
+
+            User u = userRepo.login(user.getUsername(), user.getPassword());
+
+            if (u.isAdmin() == true) {
+
+                session.setAttribute("status", "1");
+                System.out.println("Logget på");
+            } else {
+                session.setAttribute("status", "0");
+                System.out.println("Ikke logget på");
+                return "login";
+            }
+        }
+        return "redirect:/index";
     }
 
     private boolean sessionController(HttpSession session){
@@ -53,6 +61,4 @@ public class HomeController {
             return false;
         }
     }
-
-
 }
