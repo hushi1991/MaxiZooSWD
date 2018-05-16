@@ -2,11 +2,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
     <title>Title</title>
 </head>
 <body>
 
-<h1></h1>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">Navn</th>
+        <th scope="col">E-Mail</th>
+        <th scope="col">Telefon nummer</th>
+        <th scope="col">Adresse</th>
+        <th scope="col">Bronze info</th>
+        <th scope="col">Silver info</th>
+        <th scope="col">Gold info</th>
+        <th scope="col">Medarbejder ID</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td th:text="${member.name}"></td>
+        <td th:text="${member.mail}"></td>
+        <td th:text="${cardholder.phone}"></td>
+        <td th:text="${cardholder.address}"></td>
+        <td th:utext="${card.bCardNumber} + '&lt;br&gt;' + ${card.bStartDate}  + '&lt;br&gt;' + ${card.bEndDate}"></td>
+        <td th:utext="${card.sCardNumber} + '&lt;br&gt;' + ${card.sStartDate}  + '&lt;br&gt;' + ${card.sEndDate}"></td>
+        <td th:utext="${card.gCardNumber} + '&lt;br&gt;' + ${card.gStartDate}  + '&lt;br&gt;' + ${card.gEndDate}"></td>
+        <td th:text="${employee.id}"></td>
+
+    </tr>
+    </tbody>
+</table>
+
+<!--
 
 <div class="container">
     <div class="row">
@@ -46,6 +76,8 @@
         </table>
     </div>
 </div>
+
+-->
 
 </body>
 </html>
