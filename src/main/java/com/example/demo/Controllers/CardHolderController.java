@@ -60,7 +60,7 @@ public class CardHolderController {
 
     //Hvis tlf nr passer i DB vises den rigtige kunde.
     @RequestMapping(value = "/searchCardHolder", method = RequestMethod.POST)
-    public String phonelogin(Model model, @RequestParam String phone) {
+    public String searchphone(Model model, @RequestParam String phone) {
         if (cahoRepo.search(phone) != null) {
             CardHolder cardholder = cahoRepo.search(phone);
             model.addAttribute("cardholder", cardholder);
@@ -83,6 +83,24 @@ public class CardHolderController {
         System.out.println(cardholder);
         return "cardholderDetails";
     }*/
+
+    @GetMapping("/deleteCardHolder")
+    public String delete(@RequestParam("id") Integer id){
+        cahoRepo.deleteCardHolder(id);
+        return "redirect:/employeeIndex";
+    }
+
+    @GetMapping("/editCardHolder")
+    public String editCardHolder(@RequestParam("id") int id, Model model){
+        model.addAttribute("cardholder", cahoRepo.read(id));
+        return "editCardHolder";
+    }
+
+    @PostMapping("/editCardHolder")
+    public String editCardHOlder(@ModelAttribute CardHolder ch, Model model){
+        cahoRepo.updateCardHolder(ch);
+        return "redirect:/employeeIndex";
+    }
 
     private boolean sessionController(HttpSession session){
         if(session.getAttribute("status") != null && session.getAttribute("status").equals("1")){

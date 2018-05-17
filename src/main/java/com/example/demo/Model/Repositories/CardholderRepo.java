@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Repository
 public class CardholderRepo implements ICardHolderRepo {
@@ -57,11 +60,19 @@ public class CardholderRepo implements ICardHolderRepo {
     }
 
     @Override
+    public void updateCardHolder(CardHolder ch) {
+        jdbc.update("UPDATE maxi_zoo.cardholder SET member_id ='" + ch.getMember().getId() + "', " + "card_id ='" + ch.getCard().getCardId()
+         + "', " + "employee_id ='" + ch.getEmployee().getId() + "', " + "address = '" + ch.getAddress() + "', " +
+                 "postalcode = '" + ch.getPostalCode() + "', " + "phone = '" + ch.getPhone() + "'");
+
+        cR.updateCard(ch.getCard());
+    }
+
+    @Override
     public CardHolder readSpecificCardHolder(int id) {
         return null;
     }
 
-    // Problem er her at vi prøver at hente et objekt og ikke en datatype.
     @Override
     public CardHolder read(int id) {
 
@@ -83,7 +94,9 @@ public class CardholderRepo implements ICardHolderRepo {
             chnew = read(sqlRowSet.getInt("id"));
             return chnew;
         }
-        return new CardHolder();
+        return null;
     }
+
+
 
 }

@@ -31,6 +31,14 @@
         <td th:utext="${card.sCardNumber} + '&lt;br&gt;' + ${card.sStartDate}  + '&lt;br&gt;' + ${card.sEndDate}"></td>
         <td th:utext="${card.gCardNumber} + '&lt;br&gt;' + ${card.gStartDate}  + '&lt;br&gt;' + ${card.gEndDate}"></td>
         <td th:text="${employee.id}"></td>
+        <input type="hidden" th:field="*{member.id}"/>
+        <input type="hidden" th:field="*{card.cardId}"/>
+        <td>
+            <div class="btn-group btn-group-justified" style="width: 200px">
+                <a class="btn btn-primary " th:href="@{/editCardHolder(id=${cardholder.id})}">Opdater</a>
+                <a class="btn btn-danger" th:href="@{/deleteCardHolder(id=${cardholder.id})}">Slet</a>
+            </div>
+        </td>
 
     </tr>
     </tbody>

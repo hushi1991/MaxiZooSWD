@@ -32,8 +32,8 @@ public class CardRepo implements ICardRepo {
     @Override
     public void updateCard(Card card) {
 
-        jdbc.update("UPDATE maxi_zoo.card SET bcardnumber = '" + card.getbStartDate() +"', scardnumber = '" + card.getsCardNumber() +"', gcardnumber = '" + card.getgCardNumber() +"', bstartdate = '" + card.getbStartDate() +"', sstartdate = '" + card.getsStartDate() +"', gstartdate = '" + card.getgStartDate() +"'," +
-                " benddate = '" + card.getbEndDate() +"', senddate = '" + card.getsEndDate() +"', genddate = '" + card.getgEndDate() +"',   ");
+        jdbc.update("UPDATE maxi_zoo.card SET bcardnumber = '" + card.getbCardNumber() +"', scardnumber = '" + card.getsCardNumber() +"', gcardnumber = '" + card.getgCardNumber() +"', bstartdate = '" + card.getbStartDate() +"', sstartdate = '" + card.getsStartDate() +"', gstartdate = '" + card.getgStartDate() +"'," +
+                " benddate = '" + card.getbEndDate() +"', senddate = '" + card.getsEndDate() +"', genddate = '" + card.getgEndDate() + "'");
 
     }
 

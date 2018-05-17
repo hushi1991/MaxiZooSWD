@@ -17,4 +17,6 @@ public interface ICardHolderRepo {
 
     public CardHolder search(String phone);
 
+    public void updateCardHolder(CardHolder ch);
+
 }
