@@ -29,13 +29,13 @@ public class MemberController {
     public String createMember(@ModelAttribute Member member, Model model){
 
         memberRepo.createMember(member);
-
-        return "index";
-    }
-
-    @GetMapping("/memberReceipt")
-    public String memberReceipt(@RequestParam("id") int id, Model model){
-        model.addAttribute("member", memberRepo.read(id));
+        model.addAttribute("member", member);
         return "memberReceipt";
     }
+
+    /*@GetMapping("/memberReceipt")
+    public String memberReceipt(Model model){
+        model.addAttribute("member", memberRepo.read(id));
+        return "memberReceipt";
+    }*/
 }

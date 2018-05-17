@@ -23,7 +23,7 @@
     <div class="row">
         <table class="table" align="center" >
             <tr>
-                <title>Er dine oplysninger korrekte?</title>
+                <title>Dette er dine oplysninger</title>
                 <td>Navn: </td>
                 <td th:text="${member.name}"></td>
             </tr>
@@ -31,5 +31,14 @@
                 <td>E-mail: </td>
                 <td th:text="${member.mail}"></td>
             </tr>
+            <tr>
+                <td>
+                    <div class="btn-group btn-group-justified" style="width: 200px">
+                        <a class="btn btn-primary " th:href="@{/index}">Forsiden</a>
+                        <a class="btn btn-primary" >Print</a>
+                    </div>
+                </td>
+            </tr>
+        </table>
 </body>
 </html>
