@@ -9,4 +9,6 @@ public interface IMemberRepo {
     public void deleteMember(int id);
 
     public Member read(int id);
+
+    public void update(Member member);
 }
