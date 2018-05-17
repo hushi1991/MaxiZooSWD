@@ -1,40 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Create Member</title>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <title>Test</title>
+
+    <link rel="stylesheet"
+          href="C:\Users\Bruger\IdeaProjects\MaxiZooSWD\src\main\resources\static\style.css"
+          th:href="@{style.css}"/>
+
+    <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
 </head>
 <body>
 
-<h1>Opret Medlem</h1>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" th:href="@{/index}" style="font-family: Anton; color: red">Maxi Zoo</a>
+    <img alt="Brand" src="https://i.imgur.com/IVlfQjj.jpg" height="90" width="90">
 
-<form th:action="@{/createMember}" method="post" th:object="${member}">
 
-    <table align="center">
-        <tr>
-            <td>Navn</td>
-            <td>E-Mail</td>
-            <td>Nyhedsbrev</td>
-        </tr>
-        <tr>
-            <td>
-                <input type="text" th:field="*{name}" placeholder="Navn"/>
-            </td>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" th:href="@{/createMember}">Tilmeld Poteklubben <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Åbningstider</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" th:href="@{/login}">Login</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
 
-            <td>
-                <input type="text" th:field="*{mail}" placeholder="E-Mail"/>
-            </td>
 
-            <td>
-                <input type="radio" name="newsletter" value="Ja"/>
-            </td>
 
-            <td>
-                <input type="submit" value="Opret Medlem" class="btn" id="green" />
-            </td>
-        </tr>
-    </table>
-</form>
+<div class="container">
+    <div class="row main">
+        <div class="main-login main-center">
+            <h5>Bliv medlem af Maxi Zoo Pote Klubben</h5>
+            <form th:action="@{/createMember}" method="post" th:object="${member}">
+
+                <div class="form-group">
+                    <label for="name" class="cols-sm-2 control-label">Dit navn</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                            <input type="text" th:field="*{name}" class="form-control" name="name" id="name"  placeholder="Skriv dit navn"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email" class="cols-sm-2 control-label">Din Email</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                            <input type="text" th:field="*{mail}" class="form-control" name="email" id="email"  placeholder="Skriv din Email"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group ">
+                    <input type="submit" value="Opret Medlem" id="button" class="btn btn-primary btn-lg btn-block login-button">
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

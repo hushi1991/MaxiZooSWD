@@ -63,9 +63,10 @@ public class CardholderRepo implements ICardHolderRepo {
     public void updateCardHolder(CardHolder ch) {
         jdbc.update("UPDATE maxi_zoo.cardholder SET member_id ='" + ch.getMember().getId() + "', " + "card_id ='" + ch.getCard().getCardId()
          + "', " + "employee_id ='" + ch.getEmployee().getId() + "', " + "address = '" + ch.getAddress() + "', " +
-                 "postalcode = '" + ch.getPostalCode() + "', " + "phone = '" + ch.getPhone() + "'");
+                 "postalcode = '" + ch.getPostalCode() + "', " + "phone = '" + ch.getPhone() + "' WHERE  id ='" + ch.getId() + "'");
 
         cR.updateCard(ch.getCard());
+        mR.update(ch.getMember());
     }
 
     @Override

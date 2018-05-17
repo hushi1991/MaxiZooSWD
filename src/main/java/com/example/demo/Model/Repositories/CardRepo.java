@@ -33,7 +33,7 @@ public class CardRepo implements ICardRepo {
     public void updateCard(Card card) {
 
         jdbc.update("UPDATE maxi_zoo.card SET bcardnumber = '" + card.getbCardNumber() +"', scardnumber = '" + card.getsCardNumber() +"', gcardnumber = '" + card.getgCardNumber() +"', bstartdate = '" + card.getbStartDate() +"', sstartdate = '" + card.getsStartDate() +"', gstartdate = '" + card.getgStartDate() +"'," +
-                " benddate = '" + card.getbEndDate() +"', senddate = '" + card.getsEndDate() +"', genddate = '" + card.getgEndDate() + "'");
+                " benddate = '" + card.getbEndDate() +"', senddate = '" + card.getsEndDate() +"', genddate = '" + card.getgEndDate() + "' WHERE id ='" + card.getCardId() + "'");
 
     }
 

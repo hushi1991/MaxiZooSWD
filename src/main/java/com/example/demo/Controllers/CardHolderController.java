@@ -42,7 +42,7 @@ public class CardHolderController {
     @PostMapping("/createCardHolder")
     public String createMember(@ModelAttribute CardHolder cardHolder, Card card, @RequestParam String mail, @RequestParam String empId){
         cahoRepo.createCardHolder(cardHolder, card, mail, empId);
-        return "index";
+        return "redirect:/employeeIndex";
     }
 
     //Søge funktion.

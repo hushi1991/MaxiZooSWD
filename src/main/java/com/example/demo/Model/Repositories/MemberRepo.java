@@ -37,4 +37,9 @@ public class MemberRepo implements IMemberRepo {
         return new Member();
     }
 
+    @Override
+    public void update(Member member) {
+        jdbc.update("UPDATE maxi_zoo.member SET name ='" + member.getName() + "', " + "mail ='" + member.getMail() + "' WHERE id ='" + member.getId() + "'");
+    }
+
 }
