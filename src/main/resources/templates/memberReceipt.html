@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Medlem oprettet</title>
+</head>
+<body>
+<h1>Velkommen til familien</h1>
+
+
+<h3> Du er nu medlem af Pote-klubben</h3>
+<b>Som medlem af Poteklubben har du mulighed for at få kontante fordele, jo mere du handler hos Maxi Zoo.
+    Hver gang du handler for 100 kr, modtager du et Potemærke.
+    Hver gang du når et bestemt antal potemærker, kan de indløses til et personligt rabatkort, som gælder et helt år.
+    Så snart du har indsamlet Potemærker nok til at kunne opgradere til næste niveau, udskiftes dit kort, og gyldigheden forlænges med et år.
+    Efter udløb af et kort, skal du igen optjene potemærker.</b>
+
+<nav>
+<img alt="Brand" src="https://image.maxizoo.dk/media/wysiwyg/Kundeklub/infografik_loyalitet.jpg" height="250" width="500">
+</nav>
+
+<div class="container">
+    <div class="row">
+        <table class="table" align="center" >
+            <tr>
+                <title>Er dine oplysninger korrekte?</title>
+                <td>Navn: </td>
+                <td th:text="${member.name}"></td>
+            </tr>
+            <tr>
+                <td>E-mail: </td>
+                <td th:text="${member.mail}"></td>
+            </tr>
+</body>
+</html>
