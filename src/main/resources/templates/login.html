@@ -19,8 +19,8 @@
 <div class="login-page">
     <div class="form" th:if="${session.status == null}">
         <form class="login-form" method="POST" action="/login">
-            <input type="text" name="username" placeholder="Brugernavn"/>
-            <input type="password" name="password" placeholder="Password"/>
+            <input type="text" name="username" placeholder="Brugernavn" value="admin"/>
+            <input type="password" name="password" placeholder="Password" value="1234"/>
             <button type="submit" value="login">Login</button>
         </form>
     </div>

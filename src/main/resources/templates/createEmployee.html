@@ -2,39 +2,86 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
     <title>Create Employee</title>
+
+    <link rel="stylesheet"
+          href="C:\Users\Bruger\IdeaProjects\MaxiZooSWD\src\main\resources\static\style.css"
+          th:href="@{style.css}"/>
+
+    <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
 </head>
 <body>
 
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" th:href="@{/index}" style="font-family: Anton; color: red">Maxi Zoo</a>
+    <img alt="Brand" src="https://i.imgur.com/IVlfQjj.jpg" height="90" width="90">
 
-<h1>Opret Medarbejder</h1>
 
-<form th:action="@{/createEmployee}" method="post" th:object="${employee}">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link disabled" th:href="@{/createCardHolder}">Opret rabatkort</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" th:href="@{searchCardHolder}">Søg rabatkort</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" th:href="@{/createEmployee}">Opret medarbejder</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
 
-    <table align="center">
-        <tr>
-            <td>Navn</td>
-            <td>Status</td>
-            <td>Phone</td>
-        </tr>
-        <tr>
-            <td>
-                <input type="text" th:field="*{name}" placeholder="Navn"/>
-            </td>
+<div class="container">
+    <div class="row main">
+        <div class="main-login main-center">
+            <form th:action="@{/createEmployee}" method="post" th:object="${employee}">
 
-            <td>
-                <input type="text" th:field="*{status}" placeholder="Status"/>
-            </td>
+                <div class="form-group">
+                    <label for="name" class="cols-sm-2 control-label">Dit navn</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                            <input type="text" th:field="*{name}" class="form-control" name="name" id="name"  placeholder="Skriv dit navn"/>
+                        </div>
+                    </div>
+                </div>
 
-            <td>
-                <input type="text" th:field="*{phone}" placeholder="Phone"/>
-            </td>
-            <td>
-                <input type="submit" value="Opret Medarbejder" class="btn" id="green" />
-            </td>
-        </tr>
-    </table>
-</form>
+                <div class="form-group">
+                    <label for="status" class="cols-sm-2 control-label">Din status</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                            <input type="text" th:field="*{status}" class="form-control" name="status" id="status"  placeholder="Skriv din status"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone" class="cols-sm-2 control-label">Dit Telefon nummer</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                            <input type="text" th:field="*{phone}" class="form-control" name="phone" id="phone"  placeholder="Skriv dit telefon nummer"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group ">
+                    <input type="submit" value="Opret Medarbejder" id="button" class="btn btn-primary btn-lg btn-block login-button">
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

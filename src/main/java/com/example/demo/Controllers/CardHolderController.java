@@ -91,9 +91,15 @@ public class CardHolderController {
     }
 
     @GetMapping("/editCardHolder")
-    public String editCardHolder(@RequestParam("id") int id, Model model){
+    public String editCardHolder(@RequestParam("id") int id, Model model,HttpSession session){
         model.addAttribute("cardholder", cahoRepo.read(id));
+
+        if(sessionController(session)){
         return "editCardHolder";
+        }
+        else {
+            return "login";
+        }
     }
 
     @PostMapping("/editCardHolder")
