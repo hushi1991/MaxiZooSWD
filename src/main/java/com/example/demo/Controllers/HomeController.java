@@ -25,9 +25,9 @@ public class HomeController {
         return "index";
     }
 
-    @RequestMapping(value = {"bootstrapTest"}, method = RequestMethod.GET)
-    public String bootstrap() {
-        return "bootstrapTest";
+    @RequestMapping(value = {"loginTest"}, method = RequestMethod.GET)
+    public String loginTest() {
+        return "loginTest";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
