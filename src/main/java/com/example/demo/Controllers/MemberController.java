@@ -20,14 +20,8 @@ public class MemberController {
 
     @GetMapping("/createMember")
     public String employee(Model model, HttpSession session) {
-
         model.addAttribute("member", new Member());
-
-        if (sessionController(session)){
             return "CreateMember";
-        } else {
-            return "login";
-        }
     }
 
     @PostMapping("/createMember")
@@ -36,13 +30,5 @@ public class MemberController {
         memberRepo.createMember(member);
 
         return "index";
-    }
-
-    private boolean sessionController(HttpSession session){
-        if(session.getAttribute("status") != null && session.getAttribute("status").equals("1")){
-            return true;
-        } else {
-            return false;
-        }
     }
 }

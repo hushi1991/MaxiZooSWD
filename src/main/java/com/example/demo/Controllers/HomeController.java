@@ -25,6 +25,11 @@ public class HomeController {
         return "index";
     }
 
+    @RequestMapping(value = {"bootstrapTest"}, method = RequestMethod.GET)
+    public String bootstrap() {
+        return "bootstrapTest";
+    }
+
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login(Model model, HttpSession session){
 
