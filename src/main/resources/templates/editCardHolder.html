@@ -2,39 +2,150 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
     <title>Opdater KortMedlem</title>
 </head>
 <body>
 
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" th:href="@{/index}" style="font-family: Anton; color: red">Maxi Zoo</a>
+    <img alt="Brand" src="https://i.imgur.com/IVlfQjj.jpg" height="90" width="90">
+
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link disabled" th:href="@{/createCardHolder}">Opret rabatkort</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" th:href="@{searchCardHolder}">Søg rabatkort</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" th:href="@{/createEmployee}">Opret medarbejder</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
+
 <div class="container">
-    <h1>Rediger KortMedlem</h1>
+    <h1>Rediger Kort Medlem</h1>
 
-    <form th:action="@{/editCardHolder(id=${cardholder.id})}" th:method="post" th:object="${cardholder}">
-        <input type="hidden" th:field="*{id}"/>
-        <input type="hidden" th:field="*{member.id}"/>
-        <input type="text" th:field="*{member.name}" required="required"/>
-        <input type="text" th:field="*{member.mail}" required="required"/>
-        <input type="text" th:field="*{phone}" required="required"/>
-        <input type="text" th:field="*{address}" required="required"/>
-        <input type="text" th:field="*{postalCode}" required="required"/>
-        <input type="hidden" th:field="*{card.cardId}"/>
-            <input type="text" th:field="*{card.bCardNumber}" placeholder="kortnummer"/>
-            <input type="date" th:field="*{card.bStartDate}" placeholder="udleveret"/>
-            <input type="date" th:field="*{card.bEndDate}" placeholder="destrueret"/>
-
-            <input type="text" th:field="*{card.sCardNumber}" placeholder="kortnummer"/>
-            <input type="date" th:field="*{card.sStartDate}" placeholder="udleveret"/>
-            <input type="date" th:field="*{card.sEndDate}" placeholder="destrueret"/>
-
-            <input type="text" th:field="*{card.gCardNumber}" placeholder="kortnummer"/>
-            <input type="date" th:field="*{card.gStartDate}" placeholder="udleveret"/>
-            <input type="date" th:field="*{card.gEndDate}" placeholder="destrueret"/>
-
-            <input type="text" th:field="*{employee.id}" placeholder="medarbejder id" readonly="readonly"/>
+    <div class="container">
+        <div class="row main">
+            <div class="main-login main-center">
+                <form th:action="@{/editCardHolder(id=${cardholder.id})}" th:method="post" th:object="${cardholder}">
 
 
-        <input type="submit" class="btn btn-success" name="action" value="Gem Ændringer"/>
-    </form>
+                    <input type="hidden" th:field="*{id}"/>
+                    <input type="hidden" th:field="*{member.id}"/>
+
+                    <div class="form-group">
+                        <label for="name" class="cols-sm-2 control-label">Dit navn</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                <input type="text" th:field="*{member.name}" class="form-control" name="name" id="name"  placeholder="Skriv dit navn"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="status" class="cols-sm-2 control-label">Din Mail</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                                <input type="text" th:field="*{member.mail}" class="form-control" name="status" id="status"  placeholder="Skriv din mail"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone" class="cols-sm-2 control-label">Dit Telefon nummer</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                                <input type="text" th:field="*{phone}" class="form-control" name="phone" id="phone"  placeholder="Skriv dit telefon nummer"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone" class="cols-sm-2 control-label">Din Adresse</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                                <input type="text" th:field="*{address}" class="form-control" name="phone" id="address"  placeholder="Skriv din adresse"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone" class="cols-sm-2 control-label">Dit Postnummer</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                                <input type="text" th:field="*{postalCode}" class="form-control" name="postalCode" id="postalCode"  placeholder="Skriv dit postnummer"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <input type="hidden" th:field="*{card.cardId}"/>
+                    <div class="form-group">
+                        <label for="phone" class="cols-sm-2 control-label">Bronzekort</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                                <input type="text" th:field="*{card.bCardNumber}" class="form-control" name="bCardNumber" id="bCardNumber"  placeholder="Skriv kortnummer"/>
+                                <input type="date" th:field="*{card.bStartDate}" class="form-control" name="bStartDate" id="bStartDate"  placeholder="Udleveret"/>
+                                <input type="date" th:field="*{card.bEndDate}" class="form-control" name="bEndDate" id="bEndDate"  placeholder="Destrueret"/>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                        <div class="form-group">
+                            <label for="phone" class="cols-sm-2 control-label">Sølvkort</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                                    <input type="text" th:field="*{card.sCardNumber}" class="form-control" name="sCardNumber" id="sCardNumber"  placeholder="Skriv kortnummer"/>
+                                    <input type="date" th:field="*{card.sStartDate}" class="form-control" name="sStartDate" id="sStartDate"  placeholder="Udleveret"/>
+                                    <input type="date" th:field="*{card.sEndDate}" class="form-control" name="sEndDate" id="sEndDate"  placeholder="Destrueret"/>
+                                </div>
+                            </div>
+                        </div>
+
+                            <div class="form-group">
+                                <label for="phone" class="cols-sm-2 control-label">Guldkort</label>
+                                <div class="cols-sm-10">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                                        <input type="text" th:field="*{card.gCardNumber}" class="form-control" name="gCardNumber" id="gCardNumber"  placeholder="Skriv kortnummer"/>
+                                        <input type="date" th:field="*{card.gStartDate}" class="form-control" name="gStartDate" id="gStartDate"  placeholder="Udleveret"/>
+                                        <input type="date" th:field="*{card.gEndDate}" class="form-control" name="gEndDate" id="gEndDate"  placeholder="Destrueret"/>
+                                    </div>
+                                </div>
+                            </div>
+
+                    <input type="hidden" th:field="*{employee.id}" placeholder="medarbejder id" readonly="readonly"/>
+
+
+
+                    <div class="form-group ">
+                        <input type="submit" value="Opdater kort" id="button" class="btn btn-primary btn-lg btn-block login-button">
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
+
 </body>
 </html>
