@@ -26,7 +26,7 @@ public class CardholderRepo implements ICardHolderRepo {
 
 
     @Override
-    public void createCardHolder(CardHolder cardHolder, Card card, String mail, String empId) {
+    public void createCardHolder(CardHolder cardHolder, Card card, String mail, String empName) {
         Card cnew = new Card();
         Member mnew = new Member();
         Employee enew = new Employee();
@@ -42,7 +42,7 @@ public class CardholderRepo implements ICardHolderRepo {
             mnew.setId(sqlrow1.getInt("id"));
         }
 
-        SqlRowSet sqlrow2 = jdbc.queryForRowSet("SELECT id FROM maxi_zoo.employee WHERE id = '" + empId + "'");
+        SqlRowSet sqlrow2 = jdbc.queryForRowSet("SELECT id FROM maxi_zoo.employee WHERE name = '" + empName + "'");
         if (sqlrow2.next()) {
             enew.setId(sqlrow2.getInt("id"));
         }

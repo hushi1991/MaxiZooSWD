@@ -6,6 +6,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
+
 @Repository
 public class EmployeeRepo implements IEmployeeRepo {
 
@@ -29,5 +31,17 @@ public class EmployeeRepo implements IEmployeeRepo {
             return new Employee(sqlRowSet.getInt("id"), sqlRowSet.getString("name"), sqlRowSet.getString("status"), sqlRowSet.getString("phone"));
         }
         return new Employee();
+    }
+
+
+    public ArrayList<Employee> readAll() {
+        ArrayList<Employee> employees = new ArrayList<>();
+        SqlRowSet rs = jdbc.queryForRowSet("SELECT * FROM maxi_zoo.employee");
+
+        while (rs.next()) {
+            employees.add(new Employee(rs.getInt("id"), rs.getString("name"), rs.getString("status"), rs.getString("phone")));
+        }
+
+        return employees;
     }
 }

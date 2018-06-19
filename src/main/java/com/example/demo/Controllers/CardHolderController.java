@@ -3,6 +3,7 @@ package com.example.demo.Controllers;
 
 import com.example.demo.Model.Entities.Card;
 import com.example.demo.Model.Entities.CardHolder;
+import com.example.demo.Model.Entities.Employee;
 import com.example.demo.Model.Repositories.CardRepo;
 import com.example.demo.Model.Repositories.CardholderRepo;
 import com.example.demo.Model.Repositories.EmployeeRepo;
@@ -13,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 
 @Controller
 public class CardHolderController {
@@ -26,8 +28,12 @@ public class CardHolderController {
     @Autowired
     private CardholderRepo cahoRepo;
 
+    ArrayList<Employee> employees = new ArrayList<>();
+
     @GetMapping("/createCardHolder")
     public String createCardHolder(Model model, HttpSession session) {
+        employees = empRepo.readAll();
+        model.addAttribute("employeelist", employees);
         model.addAttribute("cardholder", new CardHolder());
         model.addAttribute("card", new Card());
 
@@ -40,8 +46,8 @@ public class CardHolderController {
 
 
     @PostMapping("/createCardHolder")
-    public String createMember(@ModelAttribute CardHolder cardHolder, Card card, @RequestParam String mail, @RequestParam String empId){
-        cahoRepo.createCardHolder(cardHolder, card, mail, empId);
+    public String createMember(@ModelAttribute CardHolder cardHolder, Card card, @RequestParam String mail, @RequestParam String empName){
+        cahoRepo.createCardHolder(cardHolder, card, mail, empName);
         return "redirect:/employeeIndex";
     }
 

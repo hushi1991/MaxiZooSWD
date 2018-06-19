@@ -52,7 +52,12 @@
             <input type="date" name="gEndDate" placeholder="destrueret"/>
         </td>
         <td>
-            <input type="text" name="empId" placeholder="medarbejder id"/>
+            <select th:name="empName" class="form-control">
+                <option value="">vælg Medarbejder</option>
+                <option th:each="employees : ${employeelist}"
+                        th:value="${employees.name}"
+                        th:text="${employees.name}"></option>
+            </select>
         </td>
 
 
